@@ -32,7 +32,7 @@ export default function ContactPopup({ open, onClose }) {
               📞 {phoneHuman}
             </a>
             <a
-              href={`mailto:${email}`}
+              href={`mailto: ${email}`}
               className="block w-full text-center rounded-lg border border-[#F3C53E] px-4 py-3 font-semibold text-gray-900 hover:bg-[#F3C53E]/10"
             >
               ✉️ {email}

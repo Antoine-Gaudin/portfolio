@@ -90,13 +90,13 @@ export default function Navbar({ onContactClick }) {
                 to="/"
                 className={({isActive}) => `${linkBase} ${isActive ? linkActive : ""}`}
               >
-                Home
+                Accueil
               </NavLink>
               <NavLink
                 to="/projects"
                 className={({isActive}) => `${linkBase} ${isActive ? linkActive : ""}`}
               >
-                Projects
+                Projets
               </NavLink>
               <NavLink
                 to="/skills"
