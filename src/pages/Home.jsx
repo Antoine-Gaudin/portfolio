@@ -1,6 +1,7 @@
 // src/pages/Home.jsx
 import photo from "../assets/PP noir et blanc.jpg";
-import cvFile from "../assets/AG_CV.pdf";
+import cvFile from "../assets/CV general.pdf";
+import CvDevFile from "../assets/CV dev.pdf";
 
 export default function Home() {
   return (
@@ -31,13 +32,26 @@ export default function Home() {
             d'environnement professionnel.
           </p>
 
-          <a
-            href={cvFile}
-            download
-            className="mt-6 inline-flex w-fit items-center justify-center rounded-lg px-5 py-3 font-semibold text-black bg-[#F3C53E] hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-[#F3C53E] focus:ring-offset-2"
-          >
-            Télécharger mon CV
-          </a>
+<div className="mt-6 flex gap-4">
+  {/* CV classique */}
+  <a
+    href={cvFile}
+    download
+    className="inline-flex w-fit items-center justify-center rounded-lg px-5 py-3 font-semibold text-black bg-[#F3C53E] hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-[#F3C53E] focus:ring-offset-2"
+  >
+    Télécharger mon CV
+  </a>
+
+  {/* CV Développeur (bleu) */}
+  <a
+    href={CvDevFile}
+    download
+    className="inline-flex w-fit items-center justify-center rounded-lg px-5 py-3 font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:ring-offset-2"
+  >
+    Télécharger mon CV de Développeur
+  </a>
+</div>
+
         </div>
       </div>
     </section>
