@@ -1,97 +1,103 @@
-// src/pages/Skills.jsx
-import { useState } from "react";
-import devImg from "../assets/developpeur-web.webp";
-import commercialImg from "../assets/commercial.webp";
-import microImg from "../assets/auto-entrepreneur.webp";
-import managerImg from "../assets/manager.webp";
-import PopupCarousel from "../components/PopupCarousel";
-import { SKILLS } from "../data/skills";
+import { Sparkles, Code, Database, Wrench, Users, Layout, Zap } from "lucide-react";
+import Section from "../components/ui/Section";
+import { TECH_STACK } from "../data/skills";
 
-// src/pages/Skills.jsx (seulement SkillCard modifié)
-function SkillCard({ img, title, onSelect }) {
+const ICON_MAP = {
+  sparkles: Sparkles,
+  layout: Layout,
+  code: Code,
+  database: Database,
+  zap: Zap,
+  wrench: Wrench,
+  users: Users,
+};
+
+function SkillTable({ category, delay }) {
+  const Icon = ICON_MAP[category.icon] || Sparkles;
+
   return (
-    <button
-      type="button"
-      onClick={onSelect}
-      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelect()}
-      className="group relative block overflow-hidden rounded-2xl bg-white border border-gray-200
-                 hover:border-[#F3C53E] hover:shadow-lg transition hover:-translate-y-0.5
-                 focus:outline-none focus:ring-2 focus:ring-[#F3C53E] cursor-pointer"
-      aria-haspopup="dialog"
-      aria-label={`Voir détails: ${title}`}
-    >
-      <div className="relative aspect-[4/3]">
-        <img
-          src={img}
-          alt={title}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-        {/* Bande qui remonte au hover → couleur exacte */}
-        <div className="absolute inset-x-0 bottom-0 translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-          <div className="bg-[#F3C53E] px-4 py-3">
-            <span className="font-semibold text-black">{title}</span>
+    <Section delay={delay}>
+      <div className="glass rounded-xl overflow-hidden hover:border-brand/20 transition-all glow-hover h-full flex flex-col">
+        {/* Header */}
+        <div className="flex items-center gap-3 p-5 pb-4 border-b border-white/5">
+          <div
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg"
+            style={{ backgroundColor: `${category.color}15` }}
+          >
+            <Icon size={20} style={{ color: category.color }} />
+          </div>
+          <div>
+            <h3 className="font-semibold text-white">{category.title}</h3>
+            <p className="text-xs text-gray-500">{category.description}</p>
           </div>
         </div>
-        {/* liseré discret en haut (optionnel) */}
-        <div className="absolute left-0 right-0 top-0 h-1 bg-[#F3C53E]/70" />
+
+        {/* Table */}
+        <div className="flex-1 overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-white/5 text-left text-xs text-gray-500 uppercase tracking-wider">
+                <th className="px-5 py-2.5 font-medium">Techno</th>
+                <th className="px-5 py-2.5 font-medium hidden sm:table-cell">Type</th>
+                <th className="px-5 py-2.5 font-medium">Utilisation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {category.items.map((item, i) => (
+                <tr
+                  key={item.name}
+                  className={`border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors ${
+                    i === category.items.length - 1 ? "border-b-0" : ""
+                  }`}
+                >
+                  <td className="px-5 py-3">
+                    <span className="inline-flex items-center gap-1.5 font-medium text-white">
+                      <span
+                        className="h-1.5 w-1.5 rounded-full shrink-0"
+                        style={{ backgroundColor: category.color }}
+                      />
+                      {item.name}
+                    </span>
+                  </td>
+                  <td className="px-5 py-3 hidden sm:table-cell">
+                    <span
+                      className="inline-block rounded px-2 py-0.5 text-xs font-medium"
+                      style={{
+                        backgroundColor: `${category.color}15`,
+                        color: category.color,
+                      }}
+                    >
+                      {item.category}
+                    </span>
+                  </td>
+                  <td className="px-5 py-3 text-gray-400 text-xs leading-relaxed">
+                    {item.context}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </button>
+    </Section>
   );
 }
 
 export default function Skills() {
-  const [open, setOpen] = useState(false);
-  const [startIndex, setStartIndex] = useState(0);
-
-  // Ordre demandé
-  const items = [
-    { key: "dev", title: "Développeur web", img: devImg, data: SKILLS.dev },
-    {
-      key: "commercial",
-      title: "Commercial",
-      img: commercialImg,
-      data: SKILLS.commercial,
-    },
-    {
-      key: "micro",
-      title: "Micro-entrepreneur",
-      img: microImg,
-      data: SKILLS.micro,
-    },
-    {
-      key: "manager",
-      title: "Assistant manager",
-      img: managerImg,
-      data: SKILLS.manager,
-    },
-  ];
-
   return (
-    <section className="mx-auto max-w-6xl px-6 py-12">
-      <h1 className="mb-8 text-3xl font-bold">Compétences</h1>
+    <div className="mx-auto max-w-6xl px-6 py-12">
+      <Section>
+        <h1 className="text-3xl font-bold text-white mb-2">Stack & Compétences</h1>
+        <p className="text-gray-400 mb-10">
+          Les technologies et outils que j'utilise au quotidien, et le contexte dans lequel je les applique.
+        </p>
+      </Section>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8">
-        {items.map((it, i) => (
-          <SkillCard
-            key={it.key}
-            img={it.img}
-            title={it.title}
-            onSelect={() => {
-              setStartIndex(i);
-              setOpen(true);
-            }}
-          />
+      <div className="grid gap-6 lg:grid-cols-2">
+        {TECH_STACK.map((cat, i) => (
+          <SkillTable key={cat.id} category={cat} delay={i * 100} />
         ))}
       </div>
-
-      <PopupCarousel
-        open={open}
-        onClose={() => setOpen(false)}
-        items={items}
-        startIndex={startIndex}
-      />
-    </section>
+    </div>
   );
 }

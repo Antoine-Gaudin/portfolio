@@ -1,4 +1,3 @@
-// src/data/projects.js
 import novelImg from "../assets/novelindex.webp";
 import tradImg from "../assets/tradindex.webp";
 
@@ -9,12 +8,32 @@ export const PROJECTS = [
     image: novelImg,
     website: "https://novel-index.com/",
     github: "https://github.com/Antoine-Gaudin/novel-index-nextjs",
-    tools: ["Next.js", "Tailwind CSS", "Strapi", "Cloudinary", "Cron jobs", "Axios"],
-    hosting: "Vercel (front) • Render (back)",
+    hosting: "Vercel (front) · Render (back)",
     type: "Projet personnel",
-    status: "En cours d’évolution",
+    status: "En production",
+    year: "2023",
     description:
-      "Lancé en 2023, Novel-Index est une plateforme dédiée aux light novels et webnovels asiatiques. Elle a pour but de soutenir les traducteurs amateurs et professionnels en leur offrant plus de visibilité : au lieu d’héberger les traductions, le site redirige directement les lecteurs vers le site du traducteur d’origine.\n\nPour les œuvres licenciées, Novel-Index redirige naturellement vers les éditeurs officiels, garantissant le respect des droits et la mise en avant des acteurs légitimes.\n\nConçu initialement en PHP, le projet a ensuite été entièrement re-développé en Next.js avec un back-office Strapi, afin d’apporter plus de performance, de flexibilité et une meilleure gestion des contenus.",
+      "Plateforme dédiée aux light novels et webnovels asiatiques, conçue pour soutenir les traducteurs amateurs et professionnels. Le site redirige les lecteurs vers le site du traducteur d'origine, garantissant visibilité et respect des droits.\n\nInitialement développé en PHP, le projet a été entièrement re-développé en Next.js avec un back-office Strapi pour plus de performance et de flexibilité.",
+    architecture: [
+      { layer: "Front-end", stack: "Next.js, React, Tailwind CSS" },
+      { layer: "Back-end", stack: "Strapi (CMS headless)" },
+      { layer: "Médias", stack: "Cloudinary (images, optimisation)" },
+      { layer: "Données", stack: "API REST, Axios, Cron jobs" },
+      { layer: "Hébergement", stack: "Vercel (front), Render (back)" },
+    ],
+    features: [
+      "Catalogue complet de light novels / webnovels",
+      "Redirection vers les traducteurs d'origine",
+      "Respect des licences et droits d'auteur",
+      "Recherche et filtres avancés",
+      "Gestion automatisée via Cron jobs",
+      "Back-office Strapi pour la gestion de contenu",
+    ],
+    timeline: [
+      { date: "2023", event: "Lancement initial en PHP" },
+      { date: "2024", event: "Migration complète vers Next.js + Strapi" },
+      { date: "2025", event: "Optimisations SEO et nouvelles fonctionnalités" },
+    ],
   },
   {
     slug: "trad-index",
@@ -22,14 +41,32 @@ export const PROJECTS = [
     image: tradImg,
     website: "https://trad-index.com/oeuvres",
     github: "https://github.com/Antoine-Gaudin/my-nextjs-project",
-    tools: ["Next.js", "Tailwind CSS", "Strapi", "Cloudinary", "Cron jobs", "Axios"],
-    hosting: "Vercel (front) • Render (back)",
+    hosting: "Vercel (front) · Render (back)",
     type: "Projet personnel",
-    status: "En cours de développement",
+    status: "En développement",
+    year: "2025",
     description:
-      "Lancé en 2025, Trad-Index est une plateforme dédiée aux traductions de light novels, webnovels et webtoons. Contrairement à Novel-Index, qui se concentre sur la redirection, Trad-Index propose un hébergement direct des contenus.\n\nLe projet vise à soutenir les traducteurs qui n’ont pas forcément les compétences techniques ni les moyens de créer leur propre site, en leur offrant un espace moderne, sécurisé et simple d’utilisation pour publier, organiser et partager leurs œuvres.\n\nTrad-Index met également en avant des outils collaboratifs pour la gestion des chapitres, la visibilité des projets et l’interaction avec les lecteurs.",
+      "Plateforme d'hébergement direct de traductions de light novels, webnovels et webtoons. Contrairement à Novel-Index, Trad-Index propose un hébergement direct des contenus.\n\nLe projet offre aux traducteurs un espace moderne et simple pour publier, organiser et partager leurs œuvres, avec des outils collaboratifs pour la gestion des chapitres et l'interaction avec les lecteurs.",
+    architecture: [
+      { layer: "Front-end", stack: "Next.js, React, Tailwind CSS" },
+      { layer: "Back-end", stack: "Strapi (CMS headless)" },
+      { layer: "Médias", stack: "Cloudinary (images)" },
+      { layer: "Données", stack: "API REST, Axios, Cron jobs" },
+      { layer: "Hébergement", stack: "Vercel (front), Render (back)" },
+    ],
+    features: [
+      "Hébergement direct des traductions",
+      "Espace traducteur dédié",
+      "Publication et organisation de chapitres",
+      "Outils collaboratifs",
+      "Interaction lecteurs / traducteurs",
+      "Gestion de contenu via Strapi",
+    ],
+    timeline: [
+      { date: "2025", event: "Développement et design du MVP" },
+      { date: "2025", event: "Premiers traducteurs en beta" },
+    ],
   },
 ];
 
-export const getProjectBySlug = (slug) =>
-  PROJECTS.find((p) => p.slug === slug);
+export const getProjectBySlug = (slug) => PROJECTS.find((p) => p.slug === slug);

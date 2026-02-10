@@ -1,113 +1,106 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+
+const NAV_LINKS = [
+  { to: "/", label: "Accueil" },
+  { to: "/parcours", label: "Parcours" },
+  { to: "/competences", label: "Compétences" },
+  { to: "/projects", label: "Projets" },
+];
+
+function NavItem({ to, label }) {
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+          isActive
+            ? "text-brand bg-brand/10"
+            : "text-gray-400 hover:text-white hover:bg-white/5"
+        }`
+      }
+    >
+      {label}
+    </NavLink>
+  );
+}
 
 export default function Navbar({ onContactClick }) {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
 
-  // Fermer le menu quand la route change
   useEffect(() => setOpen(false), [pathname]);
 
-  // Fermer avec Échap
   useEffect(() => {
     if (!open) return;
-    const onKey = (e) => e.key === "Escape" && setOpen(false);
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    const handleKey = (e) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
   }, [open]);
 
-  const linkBase =
-    "block px-3 py-2 rounded hover:text-[#F3C53E] focus:outline-none focus:ring-2 focus:ring-[#F3C53E]";
-  const linkActive = "text-[#F3C53E]";
-
   return (
-    <header className="sticky top-0 z-40 border-b bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/5 bg-[#0a0a14]/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        {/* Branding simple */}
-        <div className="font-semibold">Antoine&nbsp;Gaudin</div>
+        <NavLink
+          to="/"
+          className="text-lg font-bold text-white hover:text-brand transition-colors"
+        >
+          AG<span className="text-brand">.</span>
+        </NavLink>
 
-        {/* Liens desktop */}
-        <nav className="hidden items-center gap-4 md:flex">
-          <NavLink to="/" className={({isActive}) => `${linkBase} ${isActive ? linkActive : ""}`}>Accueil</NavLink>
-          <NavLink to="/projects" className={({isActive}) => `${linkBase} ${isActive ? linkActive : ""}`}>Projects</NavLink>
-          <NavLink to="/skills" className={({isActive}) => `${linkBase} ${isActive ? linkActive : ""}`}>Compétences</NavLink>
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-1 md:flex">
+          {NAV_LINKS.map((link) => (
+            <NavItem key={link.to} {...link} />
+          ))}
           <button
             type="button"
             onClick={onContactClick}
-            className="px-3 py-2 rounded bg-[#F3C53E] font-semibold text-black hover:brightness-95"
+            className="ml-2 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-black hover:brightness-110 transition"
           >
             Contact
           </button>
         </nav>
 
-        {/* Bouton burger mobile */}
+        {/* Mobile burger */}
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="md:hidden inline-flex items-center gap-2 rounded px-3 py-2 hover:bg-black/5"
+          className="rounded-lg p-2 text-gray-400 hover:bg-white/5 hover:text-white md:hidden"
           aria-label="Ouvrir le menu"
-          aria-controls="mobile-menu"
-          aria-expanded={open}
         >
-          <span className="block h-[2px] w-6 bg-black" />
-          <span className="block h-[2px] w-6 bg-black" />
-          <span className="block h-[2px] w-6 bg-black" />
+          <Menu size={22} />
         </button>
       </div>
 
-      {/* Menu mobile plein écran */}
+      {/* Mobile overlay */}
       {open && (
-        <div
-          id="mobile-menu"
-          className="fixed inset-0 z-50 md:hidden"
-          role="dialog"
-          aria-modal="true"
-        >
-          {/* backdrop */}
-          <div
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setOpen(false)}
-          />
-          {/* panneau */}
-          <div
-            className="absolute inset-0 ml-auto w-full max-w-[90%] sm:max-w-[420px] bg-white shadow-xl
-                       transition-transform duration-200 ease-out translate-x-0"
-          >
-            <div className="flex items-center justify-between border-b px-5 py-4">
-              <div className="font-semibold">Menu</div>
+        <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true">
+          <div className="absolute inset-0 bg-black/60" onClick={() => setOpen(false)} />
+          <div className="absolute right-0 top-0 bottom-0 w-72 bg-[#0f0f1a] border-l border-white/5 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-white/5 px-5 py-4">
+              <span className="font-semibold text-white">Menu</span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-[#F3C53E] text-black px-2.5 py-1 text-sm hover:brightness-95"
-                aria-label="Fermer le menu"
+                className="rounded-lg p-1.5 text-gray-400 hover:bg-white/5 hover:text-white"
+                aria-label="Fermer"
               >
-                × Fermer
+                <X size={20} />
               </button>
             </div>
-
-            <nav className="px-3 py-4 space-y-1 bg-white">
-              <NavLink
-                to="/"
-                className={({isActive}) => `${linkBase} ${isActive ? linkActive : ""}`}
-              >
-                Accueil
-              </NavLink>
-              <NavLink
-                to="/projects"
-                className={({isActive}) => `${linkBase} ${isActive ? linkActive : ""}`}
-              >
-                Projets
-              </NavLink>
-              <NavLink
-                to="/skills"
-                className={({isActive}) => `${linkBase} ${isActive ? linkActive : ""}`}
-              >
-                Compétences
-              </NavLink>
+            <nav className="flex flex-col gap-1 p-4">
+              {NAV_LINKS.map((link) => (
+                <NavItem key={link.to} {...link} />
+              ))}
               <button
                 type="button"
-                onClick={() => { onContactClick?.(); setOpen(false); }}
-                className="mt-2 w-full rounded bg-[#F3C53E] px-3 py-2 font-semibold text-black hover:brightness-95"
+                onClick={() => {
+                  onContactClick?.();
+                  setOpen(false);
+                }}
+                className="mt-3 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-black hover:brightness-110"
               >
                 Contact
               </button>

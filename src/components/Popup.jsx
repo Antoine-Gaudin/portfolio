@@ -72,16 +72,16 @@ export default function Popup({
         ) : (
           <div
             className={[
-              "w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-200 ease-out",
+              "w-full max-w-2xl overflow-hidden rounded-2xl bg-[#1a1a2e] border border-white/10 shadow-2xl transition-all duration-200 ease-out",
               visible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-2 scale-95",
               panelClassName,
             ].join(" ")}
             onClick={(e) => e.stopPropagation()}
           >
             {showHeader && (
-              <div className="flex items-center justify-between border-b p-4">
-                <h2 id={titleId} className="text-lg font-semibold">{title}</h2>
-                <button onClick={onClose} className="rounded p-2 hover:bg-gray-100" aria-label="Fermer">
+              <div className="flex items-center justify-between border-b border-white/10 p-4">
+                <h2 id={titleId} className="text-lg font-semibold text-white">{title}</h2>
+                <button onClick={onClose} className="rounded p-2 text-gray-400 hover:bg-white/10 hover:text-white" aria-label="Fermer">
                   ×
                 </button>
               </div>

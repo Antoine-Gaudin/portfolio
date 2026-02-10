@@ -1,70 +1,83 @@
-// src/data/skills.js
-export const SKILLS = {
-  dev: {
-    title: "Développeur web",
-    subtitle: "Next.js, React.js, PHP, HTML/CSS/JS, APIs, responsive",
-    bullets: [
-      "Langages & Frameworks : Maîtrise de Next.js, React.js, PHP, intégration d’API et développement responsive.",
-      "Méthodologie Agile : sprints, suivi des tickets, adaptation rapide.",
-      "Sécurité applicative : Prévention XSS, injection SQL…",
-      "Optimisation : temps de chargement, SEO, maintenance.",
-      "Outils : Git/GitHub, Strapi (CMS headless), déploiement cloud.",
-      "UX/UI : Interfaces ergonomiques avec Figma, bonnes pratiques."
-    ],
-    tags: [
-      "Next.js", "React", "PHP", "APIs",
-      "Agile", "SEO", "Sécurité", "Git/GitHub", "Strapi", "Cloud", "Figma", "Responsive"
+export const TECH_STACK = [
+  {
+    id: "vibe-coding",
+    title: "Vibe Coding & IA",
+    icon: "sparkles",
+    color: "#F3C53E",
+    description: "Développement assisté par IA, automatisation intelligente",
+    items: [
+      { name: "Claude Code", category: "Agent IA", context: "Développement assisté, génération de code, refactoring" },
+      { name: "MCP", category: "Protocole", context: "Model Context Protocol — intégration d'outils IA dans le workflow" },
+      { name: "Prompt Engineering", category: "Méthodologie", context: "Rédaction de prompts structurés pour des résultats précis" },
+      { name: "IA Agentique", category: "Concept", context: "Agents autonomes capables d'exécuter des tâches complexes" },
     ],
   },
-
-  commercial: {
-    title: "Commercial",
-    subtitle: "Prospection, relation client, négociation, suivi & reporting",
-    bullets: [
-      "Prospection & relation client : accueil, conseil et fidélisation.",
-      "Téléphonie : appels sortants, suivi téléphonique, prise de rendez-vous.",
-      "Négociation : présentation produits, organisation d’essais…",
-      "Suivi & reporting : gestion administrative, dossiers client, analyse des résultats.",
-      "Stratégie commerciale : veille, adaptation aux marchés.",
-      "Service après-vente : accompagnement, litiges, satisfaction client.",
-      "Réactivité : gestion d’imprévus, respect des normes."
-    ],
-    tags: [
-      "Prospection", "Téléphonie", "Négociation", "Reporting",
-      "SAV", "Stratégie", "Relation client"
+  {
+    id: "frontend",
+    title: "Front-end",
+    icon: "layout",
+    color: "#3B82F6",
+    description: "Interfaces modernes et responsive",
+    items: [
+      { name: "React", category: "Framework", context: "Composants, hooks, state management" },
+      { name: "Next.js", category: "Framework", context: "SSR, SSG, routing, API routes" },
+      { name: "Tailwind CSS", category: "CSS", context: "Utility-first, responsive design, dark mode" },
+      { name: "HTML / CSS", category: "Langages", context: "Sémantique, accessibilité, animations" },
+      { name: "JavaScript ES6+", category: "Langage", context: "Async/await, modules, destructuring" },
     ],
   },
-
-  micro: {
-    title: "Micro-entrepreneur",
-    subtitle: "Gestion opérationnelle, relation client, développement commercial",
-    bullets: [
-      "Gestion opérationnelle : organisation, coordination des missions.",
-      "Relation client : prospection, accueil, conseil, fidélisation.",
-      "Gestion : devis, facturation, comptabilité…",
-      "Développement commercial : stratégie marketing, acquisition clients.",
-      "Qualité de service : respect des engagements, amélioration continue, satisfaction client.",
-      "Adaptabilité & autonomie : gestion complète de l’activité."
-    ],
-    tags: [
-      "Gestion", "Devis/Facturation", "Comptabilité",
-      "Marketing", "Acquisition", "Qualité", "Autonomie"
+  {
+    id: "backend-data",
+    title: "Back-end & Data",
+    icon: "database",
+    color: "#22c55e",
+    description: "APIs, bases de données et CMS",
+    items: [
+      { name: "Strapi", category: "CMS Headless", context: "Modélisation de contenu, API REST/GraphQL, rôles" },
+      { name: "Supabase", category: "BaaS", context: "PostgreSQL, auth, realtime, storage" },
+      { name: "PHP", category: "Langage", context: "Développement serveur, première version de Novel Index" },
+      { name: "APIs REST", category: "Architecture", context: "Conception et consommation d'APIs" },
+      { name: "Axios", category: "Librairie", context: "Requêtes HTTP, intercepteurs, gestion d'erreurs" },
     ],
   },
-
-  manager: {
-    title: "Assistant manager",
-    subtitle: "Management opérationnel, organisation, optimisation",
-    bullets: [
-      "Management : encadrement et suivi opérationnel d’une équipe.",
-      "Organisation : planification, répartition des tâches, coordination.",
-      "Animation : dynamiser les ventes et motiver les collaborateurs.",
-      "Suivi des résultats : analyse des performances et reporting budgétaire.",
-      "Optimisation : amélioration continue des processus et efficacité opérationnelle."
-    ],
-    tags: [
-      "Management", "Organisation", "Animation",
-      "Reporting", "Optimisation", "Process"
+  {
+    id: "automatisation",
+    title: "Automatisation & Workflow",
+    icon: "zap",
+    color: "#f97316",
+    description: "Automatisation des processus et pipelines",
+    items: [
+      { name: "n8n", category: "No-code", context: "Workflows automatisés, intégrations, webhooks" },
+      { name: "Cron jobs", category: "Scheduling", context: "Tâches planifiées, synchronisation de données" },
+      { name: "Cloudinary", category: "Service", context: "Gestion d'images, optimisation, transformations" },
     ],
   },
-};
+  {
+    id: "outils",
+    title: "Outils & Déploiement",
+    icon: "wrench",
+    color: "#a855f7",
+    description: "Environnement de travail et mise en production",
+    items: [
+      { name: "Git / GitHub", category: "Versioning", context: "Branches, PRs, collaboration" },
+      { name: "VS Code", category: "Éditeur", context: "Extensions, snippets, intégration terminale" },
+      { name: "Vercel", category: "Hébergement", context: "Déploiement front-end, preview branches" },
+      { name: "Render", category: "Hébergement", context: "Déploiement back-end, services web" },
+      { name: "Figma", category: "Design", context: "Maquettes, prototypage, collaboration design" },
+    ],
+  },
+  {
+    id: "transversal",
+    title: "Compétences Transversales",
+    icon: "users",
+    color: "#ec4899",
+    description: "Acquises en commerce, management et entrepreneuriat",
+    items: [
+      { name: "Relation client", category: "Soft skill", context: "Accueil, conseil, fidélisation, SAV" },
+      { name: "Management", category: "Soft skill", context: "Encadrement d'équipe, planification, coordination" },
+      { name: "Négociation", category: "Soft skill", context: "Vente, présentation produits, closing" },
+      { name: "Entrepreneuriat", category: "Soft skill", context: "Gestion micro-entreprise, devis, facturation" },
+      { name: "Pédagogie", category: "Formation", context: "Formation CEPPIC en cours — transmission de savoirs" },
+    ],
+  },
+];

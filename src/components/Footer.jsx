@@ -1,61 +1,102 @@
 import { NavLink } from "react-router-dom";
+import { Github, Mail, Phone, MapPin, Linkedin } from "lucide-react";
+import { PROFILE } from "../data/profile";
+
+const FOOTER_LINKS = [
+  { to: "/", label: "Accueil" },
+  { to: "/parcours", label: "Parcours" },
+  { to: "/competences", label: "Compétences" },
+  { to: "/projects", label: "Projets" },
+];
 
 export default function Footer({ onContactClick }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-black text-gray-300 mt-12">
-      {/* petite barre d’accent */}
-      <div className="h-1 bg-[#F3C53E]" />
+    <footer className="border-t border-white/5 mt-16">
+      <div className="h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
 
-      <div className="mx-auto max-w-6xl px-6 py-8">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+      <div className="mx-auto max-w-6xl px-6 py-10">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {/* Branding */}
           <div>
-            <h3 className="text-white text-lg font-semibold">Antoine Gaudin</h3>
-            <p className="text-gray-400 text-sm mt-1">
-              Développeur web • Commercial • Micro-entrepreneur • Assistant manager
+            <h3 className="text-xl font-bold text-white">
+              AG<span className="text-brand">.</span>
+            </h3>
+            <p className="mt-2 text-sm text-gray-500 leading-relaxed">
+              Vibe Coder · Data & IA · Automatisation
             </p>
+            <div className="flex items-center gap-1.5 mt-2 text-xs text-gray-600">
+              <MapPin size={12} />
+              <span>{PROFILE.location}</span>
+            </div>
           </div>
 
           {/* Navigation */}
-          <nav className="flex flex-wrap items-center gap-4 md:gap-6">
-            <NavLink to="/" className="hover:text-[#F3C53E]">Accueil</NavLink>
-            <NavLink to="/projects" className="hover:text-[#F3C53E]">Projects</NavLink>
-            <NavLink to="/skills" className="hover:text-[#F3C53E]">Compétences</NavLink>
-            {onContactClick ? (
-              <button
-                type="button"
-                onClick={onContactClick}
-                className="hover:text-[#F3C53E]"
-                aria-haspopup="dialog"
+          <nav className="flex flex-col gap-2">
+            <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">
+              Navigation
+            </h4>
+            {FOOTER_LINKS.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className="text-sm text-gray-500 hover:text-brand transition-colors w-fit"
               >
-                Contact
-              </button>
-            ) : (
-              <a href="mailto:agaudin76@gmail.com" className="hover:text-[#F3C53E]">Contact</a>
-            )}
+                {link.label}
+              </NavLink>
+            ))}
+            <button
+              type="button"
+              onClick={onContactClick}
+              className="text-sm text-gray-500 hover:text-brand transition-colors w-fit text-left"
+            >
+              Contact
+            </button>
           </nav>
 
-          {/* Contact rapide */}
-          <div className="space-y-2">
+          {/* Contact */}
+          <div className="flex flex-col gap-3">
+            <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">
+              Contact
+            </h4>
             <a
-              href="tel:+33639902810"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#F3C53E] px-3 py-1.5 font-semibold text-black hover:brightness-95"
+              href={`tel:${PROFILE.phone.link}`}
+              className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-brand transition-colors"
             >
-              📞 06.39.90.28.10
+              <Phone size={14} />
+              {PROFILE.phone.display}
             </a>
             <a
-              href="mailto:agaudin76@gmail.com"
-              className="block hover:text-[#F3C53E]"
+              href={`mailto:${PROFILE.email}`}
+              className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-brand transition-colors"
             >
-              ✉️ agaudin76@gmail.com
+              <Mail size={14} />
+              {PROFILE.email}
+            </a>
+            <a
+              href={PROFILE.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-brand transition-colors"
+            >
+              <Github size={14} />
+              GitHub
+            </a>
+            <a
+              href={PROFILE.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-brand transition-colors"
+            >
+              <Linkedin size={14} />
+              LinkedIn
             </a>
           </div>
         </div>
 
-        <div className="mt-6 border-t border-white/10 pt-4 text-xs text-gray-400">
-          © {year} Antoine Gaudin — Tous droits réservés.
+        <div className="mt-8 border-t border-white/5 pt-6 text-center text-xs text-gray-600">
+          © {year} Antoine Gaudin — Tous droits réservés
         </div>
       </div>
     </footer>
