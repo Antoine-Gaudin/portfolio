@@ -1,6 +1,6 @@
 import photo from "../assets/PP noir et blanc.jpg";
 import cvGeneral from "../assets/CV general.pdf";
-import cvDev from "../assets/CV dev.pdf";
+import cvDev from "../assets/CV de dev.pdf";
 
 export const PROFILE = {
   name: "Antoine Gaudin",
