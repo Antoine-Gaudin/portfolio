@@ -1,7 +1,38 @@
 import novelImg from "../assets/novelindex.webp";
 import tradImg from "../assets/tradindex.webp";
+import kanveoImg from "../assets/kanveo.png";
 
 export const PROJECTS = [
+  {
+    slug: "kanveo",
+    title: "Kanveo",
+    image: kanveoImg,
+    website: "https://kanveo.fr/",
+    github: "https://github.com/Antoine-Gaudin/kanveo",
+    hosting: "Vercel",
+    type: "Projet personnel",
+    status: "En production",
+    year: "2025",
+    description:
+      "Application web moderne construite avec React, Vite et Supabase. Kanveo propose une interface soignée grâce à Shadcn UI et Tailwind CSS, avec un back-end serverless géré par Supabase pour l'authentification, la base de données et le stockage.",
+    architecture: [
+      { layer: "Front-end", stack: "React, Vite, Tailwind CSS, Shadcn UI" },
+      { layer: "Back-end", stack: "Supabase (BaaS)" },
+      { layer: "Base de données", stack: "PostgreSQL (Supabase)" },
+      { layer: "Authentification", stack: "Supabase Auth" },
+      { layer: "Hébergement", stack: "Vercel" },
+    ],
+    features: [
+      "Interface moderne avec Shadcn UI",
+      "Authentification utilisateur via Supabase",
+      "Base de données PostgreSQL temps réel",
+      "Design responsive avec Tailwind CSS",
+      "Build rapide avec Vite",
+    ],
+    timeline: [
+      { date: "2025", event: "Développement et mise en production" },
+    ],
+  },
   {
     slug: "novel-index",
     title: "Novel Index",
